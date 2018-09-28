@@ -16,15 +16,15 @@ def parse_file(fileStr,table,index):
     comment_times = tree.xpath("//div//span[@class='comment-time ']")  # 获取评论时间
     comment_texts = tree.xpath("//div//span[@class='short']")  # 获取评论
 
-    i = index
+    i = index+1  # 由于index开始是从0开始的，所以保存到excel的插入行从1开始，第0行用于设置标题头
     for user in comment_users:
         table.write(i, 0, user.text)
         i += 1
-    i = index
+    i = index+1
     for txt in comment_times:
         table.write(i, 1, txt.text)
         i += 1
-    i = index
+    i = index+1
     for com in comment_texts:
         table.write(i, 2, com.text)
         i += 1
